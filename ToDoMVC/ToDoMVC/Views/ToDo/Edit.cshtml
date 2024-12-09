@@ -1,0 +1,17 @@
+﻿@model ToDoMVC.Models.ToDoItem
+
+<h2>Edit To-Do Item</h2>
+
+<form action="/ToDo/EditConfirmed" method="post">
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="text" name="Title" class="form-control" value="@Model.Title" required />
+    </div>
+    <div class="form-group">
+        <label for="CreatedDate">Created Date</label>
+        <input type="text" class="form-control" value="@Model.Metadata.CreatedDate" readonly />
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="/ToDo/Index" class="btn btn-secondary">Cancel</a>
+</form>

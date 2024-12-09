@@ -1,0 +1,38 @@
+@model List<ToDoMVC.Models.ToDoItem>
+
+<h2>To-Do List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@item.Metadata.CreatedDate</td>
+                <td>
+                    <a href="/ToDo/Edit/@item.Id" class="btn btn-warning">Edit</a>
+                    <form action="/ToDo/Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Add New To-Do</h3>
+<form action="/ToDo/Add" method="post">
+    <div class="form-group">
+        <input type="text" name="Title" class="form-control" placeholder="Enter Title" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Task</button>
+</form>
